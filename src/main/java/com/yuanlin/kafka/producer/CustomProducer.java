@@ -12,7 +12,7 @@ public class CustomProducer
 	{
 		Properties properties = new Properties();
 
-		properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "116.205.228.254:9092");
+		properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "esMaster:9092");
 		properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 		properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
