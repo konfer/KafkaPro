@@ -19,9 +19,11 @@ public class CustomProducerParameters
 		properties.put(ProducerConfig.BATCH_SIZE_CONFIG,16384);
 		properties.put(ProducerConfig.LINGER_MS_CONFIG, 1);
 		properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
-
+		properties.put(ProducerConfig.ACKS_CONFIG, "1");
+		properties.put(ProducerConfig.RETRIES_CONFIG, 3);
 
 		KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
+
 
 		for(int i = 0; i < 50; i++)
 		{
