@@ -15,7 +15,7 @@ public class CustomProducerTransaction
 		properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 		properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-		properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG,"firstTransactionID");
+		properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG,"TransactionID_2");
 
 		KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
 
@@ -26,7 +26,7 @@ public class CustomProducerTransaction
 		{
 			for(int i = 0; i < 50; i++)
 			{
-				kafkaProducer.send(new ProducerRecord<>("foo","test3:"+i));
+				kafkaProducer.send(new ProducerRecord<>("foo","test6:"+i));
 
 				System.out.println("finish:"+ i);
 			}
