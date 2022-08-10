@@ -29,13 +29,11 @@ public class CustomConsumer
 
 		//4---Topic
 		ArrayList<String> topics = new ArrayList<>();
-		topics.add("foo");
+		topics.add("foo2");
 		kafkaConsumer.subscribe(topics);
-		System.out.println("begin");
 		//5---get data
 		while (true)
 		{
-			System.out.println("get here");
 			ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(Duration.ofSeconds(1));
 			for(ConsumerRecord<String, String> consumerRecord:consumerRecords)
 			{
