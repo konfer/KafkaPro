@@ -4,13 +4,14 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class CustomConsumer
+public class SpecPartitionConsumer
 {
 	public static void main(String[] args)
 	{
@@ -27,10 +28,10 @@ public class CustomConsumer
 		//3---Consumer client
 		KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
 
-		//4---Topic
-		ArrayList<String> topics = new ArrayList<>();
-		topics.add("foo2");
-		kafkaConsumer.subscribe(topics);
+		//4---Topic and Partition info
+		ArrayList<TopicPartition> topics = new ArrayList<>();
+		topics.add(new TopicPartition("HWCluster",2));
+		kafkaConsumer.assign(topics);
 
 		//5---get data
 		while (true)
@@ -41,6 +42,6 @@ public class CustomConsumer
 				System.out.println(consumerRecord);
 			}
 		}
-
+		
 	}
 }
