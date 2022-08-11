@@ -18,9 +18,9 @@ public class CustomProducer
 
 		KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
 
-		for(int i = 0; i < 50; i++)
+		for(int i = 0; i < 200; i++)
 		{
-			kafkaProducer.send(new ProducerRecord<>("foo","test2:"+i), new Callback(){
+			kafkaProducer.send(new ProducerRecord<>("HWCluster","test7:"+i), new Callback(){
 				@Override public void onCompletion (RecordMetadata metaData, Exception exce)
 				{
 					if(exce == null)
@@ -32,7 +32,7 @@ public class CustomProducer
 
 			try
 			{
-				Thread.sleep(2);
+				Thread.sleep(5);
 			} catch(InterruptedException e)
 			{
 				throw new RuntimeException(e);
